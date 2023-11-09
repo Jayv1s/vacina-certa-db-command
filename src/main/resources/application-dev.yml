@@ -22,4 +22,5 @@ spring:
       enabled: true
       path: /h2-console
 
-application.name: dev-profile
+application:
+  name: dev-profile
