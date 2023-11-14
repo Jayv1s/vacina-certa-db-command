@@ -3,12 +3,11 @@ spring:
     activate:
       on-profile: dev
 
-  # datasource: é onde configura as conexões com a base de dados;
   datasource:
-    url: jdbc:h2:mem:test # connection string
+    url: ${DB_URL}
     driverClassName: org.h2.Driver # driver do banco utilizado para conexão
-    username: admin
-    password: admin
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
 
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
