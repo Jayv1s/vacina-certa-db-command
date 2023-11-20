@@ -1,7 +1,7 @@
-package com.vacinacerta.usecase;
+package com.vacinacerta.infraestructure;
 
 import com.entities.db.UserAccess;
-import com.vacinacerta.repository.IUserAccessRepository;
+import com.vacinacerta.domain.repository.IUserAccessRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

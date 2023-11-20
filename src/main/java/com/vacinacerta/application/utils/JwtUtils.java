@@ -1,4 +1,4 @@
-package com.vacinacerta.utils;
+package com.vacinacerta.application.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

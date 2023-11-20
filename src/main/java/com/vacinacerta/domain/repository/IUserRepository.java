@@ -1,4 +1,4 @@
-package com.vacinacerta.repository;
+package com.vacinacerta.domain.repository;
 
 import com.entities.db.User;
 import org.springframework.data.jpa.repository.JpaRepository;

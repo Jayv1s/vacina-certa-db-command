@@ -1,7 +1,7 @@
-package com.vacinacerta.usecase.vaccine;
+package com.vacinacerta.domain.usecase.vaccine;
 
-import com.vacinacerta.repository.IVaccineRepository;
-import com.vacinacerta.usecase.IUseCase;
+import com.vacinacerta.domain.repository.IVaccineRepository;
+import com.vacinacerta.domain.usecase.IUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

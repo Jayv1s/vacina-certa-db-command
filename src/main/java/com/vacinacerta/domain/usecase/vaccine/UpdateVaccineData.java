@@ -1,8 +1,8 @@
-package com.vacinacerta.usecase.vaccine;
+package com.vacinacerta.domain.usecase.vaccine;
 
 import com.entities.db.Vaccine;
-import com.vacinacerta.repository.IVaccineRepository;
-import com.vacinacerta.usecase.IUseCase;
+import com.vacinacerta.domain.repository.IVaccineRepository;
+import com.vacinacerta.domain.usecase.IUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,17 +12,15 @@ import java.time.LocalDateTime;
 
 @Service
 @AllArgsConstructor
-@Qualifier("InsertVaccine")
-public class InsertVaccine implements IUseCase<Vaccine, String> {
+@Qualifier("UpdateVaccineData")
+public class UpdateVaccineData implements IUseCase<Vaccine, Vaccine> {
 
     @Autowired
     private final IVaccineRepository vaccineRepository;
 
     @Override
-    public String execute(Vaccine vaccine) {
-        vaccine.setCreatedAt(LocalDateTime.now());
+    public Vaccine execute(Vaccine vaccine) {
         vaccine.setUpdatedAt(LocalDateTime.now());
-        Vaccine res = vaccineRepository.save(vaccine);
-        return res.getId();
+        return vaccineRepository.save(vaccine);
     }
 }

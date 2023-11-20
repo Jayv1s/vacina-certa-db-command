@@ -1,6 +1,6 @@
-package com.vacinacerta.usecase;
+package com.vacinacerta.infraestructure;
 
-import com.vacinacerta.utils.JwtUtils;
+import com.vacinacerta.application.utils.JwtUtils;
 import io.jsonwebtoken.Claims;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

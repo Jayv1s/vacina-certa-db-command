@@ -1,8 +1,7 @@
-package com.vacinacerta.config;
+package com.vacinacerta.application.config;
 
-import com.vacinacerta.usecase.RequestFilter;
-import com.vacinacerta.usecase.UserDetailsServiceImpl;
-import com.vacinacerta.utils.JwtUtils;
+import com.vacinacerta.infraestructure.RequestFilter;
+import com.vacinacerta.application.utils.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
