@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   config:
     activate:
@@ -27,6 +29,9 @@ spring:
         show_sql: false
         format_sql: false
 
+security:
+  jwt:
+    key: ${JWT_KEY}
 
 application:
   name: prod-profile

@@ -7,9 +7,9 @@
 | DB_USERNAME            | Username to connect to DB       |
 | DB_PASSWORD            | Password to connect to DB       |
 | DB_URL                 | Connection's URL of DB          |
+| JWT_KEY                | Key used to encryp/generate JWT |
 
 Some reference values from local using H2:
 
-
-`-Dspring.profiles.active=dev -DDB_USERNAME=admin -DDB_PASSWORD=admin -DDB_URL=jdbc:h2:mem:test`
+`-Dspring.profiles.active=dev -DDB_USERNAME=admin -DDB_PASSWORD=admin -DDB_URL=jdbc:h2:mem:test -DJWT_TOKEN={signing-key-used-to-generate-jwt}`
 
