@@ -8,6 +8,17 @@ spring:
     driverClassName: org.postgresql.Driver
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+    test-on-borrow: true
+    validation-query: SELECT 1;
+    validation-interval: 3000
+    test-while-idle: true
+    time-between-eviction-runs-millis: 30000
+    remove-abandoned: true
+    remove-abandoned-timeout: 30
+    hikari:
+      connectionTimeout: 40000
+      idleTimeout: 50000
+      maxLifeTime: 30000
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
