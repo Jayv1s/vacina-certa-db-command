@@ -1,6 +1,6 @@
 package com.vacinacerta.domain.repository;
 
-import com.entities.db.Vaccine;
+import com.vacinacerta.domain.entities.db.Vaccine;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

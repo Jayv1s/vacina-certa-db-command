@@ -1,6 +1,6 @@
 package com.vacinacerta.domain.usecase.vaccine;
 
-import com.entities.db.Vaccine;
+import com.vacinacerta.domain.entities.db.Vaccine;
 import com.vacinacerta.domain.repository.IVaccineRepository;
 import com.vacinacerta.domain.usecase.IUseCase;
 import lombok.AllArgsConstructor;

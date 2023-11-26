@@ -1,6 +1,7 @@
 package com.vacinacerta.application.controller;
 
-import com.entities.dto.UsersDTO;
+
+import com.vacinacerta.domain.entities.dto.UsersDTO;
 import com.vacinacerta.domain.usecase.IUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

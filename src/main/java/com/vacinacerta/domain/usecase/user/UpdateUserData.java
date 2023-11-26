@@ -1,8 +1,9 @@
 package com.vacinacerta.domain.usecase.user;
 
-import com.entities.db.User;
-import com.entities.dto.UsersDTO;
-import com.entities.mapper.UserMapper;
+
+import com.vacinacerta.domain.entities.db.User;
+import com.vacinacerta.domain.entities.dto.UsersDTO;
+import com.vacinacerta.domain.entities.mapper.UserMapper;
 import com.vacinacerta.domain.repository.IUserRepository;
 import com.vacinacerta.domain.usecase.IUseCase;
 import lombok.AllArgsConstructor;

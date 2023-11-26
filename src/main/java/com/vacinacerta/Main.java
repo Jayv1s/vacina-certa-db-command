@@ -1,8 +1,9 @@
 package com.vacinacerta;
 
-import com.entities.db.User;
-import com.entities.db.UsersVaccines;
-import com.entities.db.Vaccine;
+
+import com.vacinacerta.domain.entities.db.User;
+import com.vacinacerta.domain.entities.db.UsersVaccines;
+import com.vacinacerta.domain.entities.db.Vaccine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
