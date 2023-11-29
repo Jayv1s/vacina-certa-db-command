@@ -1,11 +1,11 @@
 package com.vacinacerta.domain.usecase.usersvaccines;
 
-import com.entities.db.User;
-import com.entities.db.UsersVaccines;
-import com.entities.db.Vaccine;
-import com.entities.dto.UsersVaccinesDTO;
-import com.entities.mapper.UsersVaccinesMapper;
 import com.vacinacerta.application.context.UserVaccineContext;
+import com.vacinacerta.domain.entities.db.User;
+import com.vacinacerta.domain.entities.db.UsersVaccines;
+import com.vacinacerta.domain.entities.db.Vaccine;
+import com.vacinacerta.domain.entities.dto.UsersVaccinesDTO;
+import com.vacinacerta.domain.entities.mapper.UsersVaccinesMapper;
 import com.vacinacerta.domain.repository.IUsersVaccinesRepository;
 import com.vacinacerta.domain.usecase.IUseCase;
 import lombok.AllArgsConstructor;

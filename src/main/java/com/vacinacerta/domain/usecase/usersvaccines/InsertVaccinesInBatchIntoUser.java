@@ -1,9 +1,9 @@
 package com.vacinacerta.domain.usecase.usersvaccines;
 
-import com.entities.db.User;
-import com.entities.db.UsersVaccines;
-import com.entities.db.Vaccine;
 import com.vacinacerta.application.context.UserVaccineContext;
+import com.vacinacerta.domain.entities.db.User;
+import com.vacinacerta.domain.entities.db.UsersVaccines;
+import com.vacinacerta.domain.entities.db.Vaccine;
 import com.vacinacerta.domain.repository.IUsersVaccinesRepository;
 import com.vacinacerta.domain.usecase.IUseCase;
 import lombok.AllArgsConstructor;
