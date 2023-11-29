@@ -1,32 +1,65 @@
 package com.vacinacerta.application.controller;
 
-import com.vacinacerta.domain.entities.dto.UsersVaccinesDTO;
+import com.entities.db.UsersVaccines;
+import com.entities.dto.UsersVaccinesDTO;
+import com.vacinacerta.application.context.UserVaccineContext;
 import com.vacinacerta.domain.usecase.IUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class UsersVaccinesController {
 
-    private final IUseCase<UsersVaccinesDTO, UsersVaccinesDTO> insertNewUsersVaccine;
+    private final IUseCase<UserVaccineContext, UsersVaccinesDTO> insertNewUsersVaccine;
+    private final IUseCase<UserVaccineContext, List<UsersVaccines>> insertVaccinesInBatchIntoUser;
 
     @Autowired
     private UsersVaccinesController(
             @Qualifier("InsertNewUsersVaccine")
-            IUseCase<UsersVaccinesDTO, UsersVaccinesDTO> insertNewUsersVaccine
+            IUseCase<UserVaccineContext, UsersVaccinesDTO> insertNewUsersVaccine,
+            @Qualifier("InsertVaccinesInBatchIntoUser")
+            IUseCase<UserVaccineContext, List<UsersVaccines>> insertVaccinesInBatchIntoUser
     ) {
         this.insertNewUsersVaccine = insertNewUsersVaccine;
+        this.insertVaccinesInBatchIntoUser = insertVaccinesInBatchIntoUser;
     }
 
-    @PostMapping("/users/vaccines")
-    private ResponseEntity<UsersVaccinesDTO> insertUsersVaccines(@RequestBody UsersVaccinesDTO usersVaccinesDTO) {
-        var response = insertNewUsersVaccine.execute(usersVaccinesDTO);
+    @PostMapping("/users/{userId}/vaccines")
+    private ResponseEntity<UsersVaccinesDTO> insertUsersVaccines(@PathVariable String userId, @RequestBody UsersVaccinesDTO usersVaccinesDTO) {
+        UserVaccineContext context = UserVaccineContext.builder()
+                .userId(userId)
+                .vaccineId(usersVaccinesDTO.getVaccine().getId())
+                .build();
+        var response = insertNewUsersVaccine.execute(context);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/users/{userId}/vaccines/batch")
+    private ResponseEntity<?> insertVaccineInBatchIntoUser(@PathVariable String userId, @RequestBody List<String> vaccinesId) {
+        UserVaccineContext context = UserVaccineContext.builder()
+                .userId(userId)
+                .vaccineIds(vaccinesId)
+                .build();
+
+        List<UsersVaccines> response = insertVaccinesInBatchIntoUser.execute(context);
+
+        if(response.size() == vaccinesId.size()) {
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        }
+
+        if(!response.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.PARTIAL_CONTENT);
+        }
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }
