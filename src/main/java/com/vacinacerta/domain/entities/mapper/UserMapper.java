@@ -5,6 +5,8 @@ import com.vacinacerta.domain.entities.db.User;
 import com.vacinacerta.domain.entities.dto.UsersDTO;
 import com.vacinacerta.domain.enums.DocumentsType;
 
+import java.util.Objects;
+
 public class UserMapper {
     public static UsersDTO convertToUsersDTO(User user) {
         return UsersDTO.builder()
@@ -12,7 +14,7 @@ public class UserMapper {
                 .createdAt(user.getCreatedAt())
                 .dateOfBirth(user.getDateOfBirth())
                 .document(user.getDocument())
-                .documentType(DocumentsType.valueOf(user.getDocumentType()))
+                .documentType(Objects.nonNull(user.getDocumentType()) ? DocumentsType.valueOf(user.getDocumentType()) : null)
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .updatedAt(user.getUpdatedAt())

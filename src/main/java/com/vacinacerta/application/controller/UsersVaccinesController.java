@@ -36,7 +36,7 @@ public class UsersVaccinesController {
     private ResponseEntity<UsersVaccinesDTO> insertUsersVaccines(@PathVariable String userId, @RequestBody UsersVaccinesDTO usersVaccinesDTO) {
         UserVaccineContext context = UserVaccineContext.builder()
                 .userId(userId)
-                .vaccineId(usersVaccinesDTO.getVaccine().getId())
+                .usersVaccinesDTO(usersVaccinesDTO)
                 .build();
         var response = insertNewUsersVaccine.execute(context);
 
@@ -44,15 +44,15 @@ public class UsersVaccinesController {
     }
 
     @PostMapping("/users/{userId}/vaccines/batch")
-    private ResponseEntity<?> insertVaccineInBatchIntoUser(@PathVariable String userId, @RequestBody List<String> vaccinesId) {
+    private ResponseEntity<?> insertVaccineInBatchIntoUser(@PathVariable String userId, @RequestBody List<UsersVaccinesDTO> usersVaccinesDTOList) {
         UserVaccineContext context = UserVaccineContext.builder()
                 .userId(userId)
-                .vaccineIds(vaccinesId)
+                .usersVaccinesDTOList(usersVaccinesDTOList)
                 .build();
 
         List<UsersVaccines> response = insertVaccinesInBatchIntoUser.execute(context);
 
-        if(response.size() == vaccinesId.size()) {
+        if(response.size() == usersVaccinesDTOList.size()) {
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
 

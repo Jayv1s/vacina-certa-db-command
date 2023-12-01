@@ -1,5 +1,6 @@
 package com.vacinacerta.application.context;
 
+import com.vacinacerta.domain.entities.dto.UsersVaccinesDTO;
 import lombok.Builder;
 import lombok.Data;
 
@@ -9,6 +10,6 @@ import java.util.List;
 @Data
 public class UserVaccineContext {
     String userId;
-    List<String> vaccineIds;
-    String vaccineId;
+    List<UsersVaccinesDTO> usersVaccinesDTOList;
+    UsersVaccinesDTO usersVaccinesDTO;
 }

@@ -1,6 +1,7 @@
 package com.vacinacerta.domain.entities.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.vacinacerta.domain.entities.db.UsersVaccines;
 import com.vacinacerta.domain.enums.DocumentsType;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UsersDTO {
     private String id;
     private String firstName;

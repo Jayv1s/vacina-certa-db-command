@@ -4,6 +4,7 @@ import com.vacinacerta.application.context.UserVaccineContext;
 import com.vacinacerta.domain.entities.db.User;
 import com.vacinacerta.domain.entities.db.UsersVaccines;
 import com.vacinacerta.domain.entities.db.Vaccine;
+import com.vacinacerta.domain.entities.dto.UsersVaccinesDTO;
 import com.vacinacerta.domain.repository.IUsersVaccinesRepository;
 import com.vacinacerta.domain.usecase.IUseCase;
 import lombok.AllArgsConstructor;
@@ -23,13 +24,14 @@ public class InsertVaccinesInBatchIntoUser implements IUseCase<UserVaccineContex
     private IUsersVaccinesRepository vaccinesRepository;
 
     @Override
-    public List<UsersVaccines> execute(UserVaccineContext userVaccineContext) {
+    public List<UsersVaccines> execute(UserVaccineContext context) {
         List<UsersVaccines> usersVaccineList = new ArrayList<>();
 
-        for (String vaccineID : userVaccineContext.getVaccineIds()) {
+        for (UsersVaccinesDTO usersVaccinesDTO : context.getUsersVaccinesDTOList()) {
             UsersVaccines usersVaccine =  UsersVaccines.builder()
-                    .user(User.builder().id(userVaccineContext.getUserId()).build())
-                    .vaccine(Vaccine.builder().id(vaccineID).build())
+                    .user(User.builder().id(context.getUserId()).build())
+                    .vaccine(Vaccine.builder().id(usersVaccinesDTO.getVaccineDTO().getId()).build())
+                    .appliedAt(usersVaccinesDTO.getAppliedAt())
                     .build();
 
             usersVaccineList.add(usersVaccine);

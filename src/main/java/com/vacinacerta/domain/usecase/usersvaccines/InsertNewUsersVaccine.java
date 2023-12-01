@@ -25,7 +25,8 @@ public class InsertNewUsersVaccine implements IUseCase<UserVaccineContext, Users
     public UsersVaccinesDTO execute(UserVaccineContext context) {
         UsersVaccines usersVaccines = UsersVaccines.builder()
                 .user(User.builder().id(context.getUserId()).build())
-                .vaccine(Vaccine.builder().id(context.getVaccineId()).build())
+                .vaccine(Vaccine.builder().id(context.getUsersVaccinesDTO().getVaccineDTO().getId()).build())
+                .appliedAt(context.getUsersVaccinesDTO().getAppliedAt())
                 .build();
         
         return UsersVaccinesMapper.convertToUsersVaccinesDTO(usersVaccinesRepository.save(usersVaccines));
